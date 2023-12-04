@@ -2,7 +2,7 @@
 
 This an example exercise in getting a 2 GraphQL servers running on a local PostgreSQL database and on top of that a federated server with Wundergraph Cosmo
 
-Resourse of information.
+Resource of information.
 
 For the GraphQL yoga server:
 https://the-guild.dev/graphql/yoga-server/tutorial
@@ -10,11 +10,11 @@ https://the-guild.dev/graphql/yoga-server/tutorial
 For the Wundergraph cosmo server:
 https://docs.wundergraph.com/docs/getting-started/quickstart
 
-DCAT graphql will run on http://localhost:4001/graphql
-WOZ graphql will run on http://localhost:4002/graphql
-Wundergraph graphql will run on http://localhost:9991/graphql
+DCAT graphql will run on http://localhost:4001/graphql.
+WOZ graphql will run on http://localhost:4002/graphql.
+Wundergraph graphql will run on http://localhost:9991/graphql.
 
-# Databases neer to be create and populated.
+# Databases need to be create and populated.
 Creation can be done with prisma is user has the proper rights.
 Population needs to be done with your own data.
 
