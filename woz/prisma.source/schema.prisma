@@ -1,0 +1,453 @@
+
+
+// Generated: 2023-11-15 14:47:55
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+//  provider = "sqlite"
+//  provider = "mysql"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Sjmsubjectvolledig {
+  subjectnr Int @id
+  subjectnaam String?
+}
+
+model Taxtaxatie {
+  taxatienr Int @id
+  tijdvaknr Int?
+  ddsituatie DateTime?
+  taxredencode String?
+  cbsvrijsteldom String?
+  indwoning String?
+  resultaatdom String?
+  srtobjectcode String?
+  indreferentie String?
+  gebouwddom String?
+  ddvastgesteld DateTime?
+  ddtaxatie DateTime?
+  indcourant String?
+  monumentcode String?
+  stopcode String?
+  adresbenamingnr Int?
+  omschrijving String?
+  broncode String?
+  transactienr Int?
+  euwoz Int?
+  eutaxatie Int?
+  euozb Int?
+  eugebouwd Int?
+  jjbouw Int?
+  jjbouwrange String?
+  jjrenovatie Int?
+  pprenovatie Int?
+  ppgereed Int?
+  subjectnreig Int?
+  subjectnrgeb Int?
+  bouwlaagtoegang String?
+  groepaanduiding String?
+  groepnr Int?
+  bijzwaarderingsdom String?
+  waardvoorschriftdom String?
+  omzetbelastingdom String?
+  indvervallen String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  resultaatcontroledom String?
+  ppstijging Int?
+  taxcompromiscode String?
+  eucompromiswoz Int?
+  eucompromisozb Int?
+  ddtoestand DateTime?
+  euozbgn Int?
+  bouwtypecode String?
+  euprognose Int?
+  indgebouwd String?
+  inpandigdom String?
+  taxverslagdom String?
+  eucompromisozbgn Int?
+  doelmatigheiddom String?
+  functionaliteitdom String?
+  kwaliteitdom String?
+  leegstandsrisicodom String?
+  liggingdom String?
+  locatiedom String?
+  onderhouddom String?
+  uitstralingdom String?
+  voorzieningdom String?
+  euprognosegebr String?
+  waardegebiedcode String?
+  ttwozwijziging DateTime?
+  gebruiktemethodiekdom String?
+  identificatietvs String?
+  taxatiebrondom String?
+  procesmutatie String?
+  wozobject Wozobject? @relation(fields: [objectnr] , references: [objectnr])
+  objectnr Int?
+}
+
+model Wozbelang {
+  belangnr Int @id
+  ttingangreg DateTime?
+  ingangregnr Int?
+  ingangstatusdom String?
+  tteindereg DateTime?
+  einderegnr Int?
+  eindestatusdom String?
+  aandeigenaargebrdom String?
+  stopcode String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  procesmutatie String?
+  wozbelangcyclus Wozbelangcyclus[]
+  wozobject Wozobject? @relation(fields: [objectnr] , references: [objectnr])
+  objectnr Int?
+}
+
+model Wozbelangcyclus {
+  belangcyclusnr Int @id
+  ttingangreg DateTime?
+  ingangregnr Int?
+  ingangstatusdom String?
+  tteindereg DateTime?
+  einderegnr Int?
+  eindestatusdom String?
+  ttingang DateTime?
+  tteinde DateTime?
+  subjectnr Int?
+  indinonderzoek String?
+  belangstatusdom String?
+  indcumsuis String?
+  zakelijkrechtcode String?
+  broncode String?
+  groeprelcode String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  ddconstatering DateTime?
+  redenconstateringcode String?
+  procesmutatie String?
+  wozbelang Wozbelang? @relation(fields: [belangnr] , references: [belangnr])
+  belangnr Int?
+}
+
+model Wozdeelobject {
+  deelobjectnr Int @id
+  ttingangreg DateTime?
+  ingangregnr Int?
+  ingangstatusdom String?
+  tteindereg DateTime?
+  einderegnr Int?
+  eindestatusdom String?
+  nummer Int?
+  usermutatie String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  indwoz String?
+  indtaxatie String?
+  ouderdeelobject Int?
+  procesmutatie String?
+  wozdeelobjectcyclus Wozdeelobjectcyclus[]
+  wozobject Wozobject? @relation(fields: [objectnr] , references: [objectnr])
+  objectnr Int?
+}
+
+model Wozdeelobjectcode {
+  deelobjectcode String @id
+  indvervallen String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  usermutatie String?
+  ddingang DateTime?
+  ddeinde DateTime?
+  omschrijving String?
+  omschrijvingverkort String?
+  srtdeeldom String?
+  eenheiddom String?
+  vrijstelcode String?
+  itzafactor Int?
+  ppfactortondom String?
+  eenheidtondom String?
+  opptondom String?
+  inhoudtondom String?
+  aantaltondom String?
+  waardetondom String?
+  laagtondom String?
+  bouwjaartondom String?
+  aantekeningtondom String?
+  itzafactortondom String?
+  maatvoeringtondom String?
+  huurprijstondom String?
+  kapfactortondom String?
+  vrijstellingtondom String?
+  pprenovatietondom String?
+  onderhoudtondom String?
+  kwaliteittondom String?
+  modeltypedom String?
+  eudefault Int?
+  stuftaxonderdeelcode String?
+  breedtetondom String?
+  hoogtetondom String?
+  lengtetondom String?
+  doelmatigheidtondom String?
+  uitstralingtondom String?
+  afrondfactortondom String?
+  afrondfactor Int?
+  indgebouwd String?
+  indwoning String?
+  euminimum Int?
+  indwoz String?
+  indtaxatie String?
+  indvmlmuteren String?
+  indvmlverwijderen String?
+  indvmltoelichting String?
+  liggingdom String?
+  kwaliteitdom String?
+  onderhouddom String?
+  doelmatigheiddom String?
+  uitstralingdom String?
+  voorzieningendom String?
+  ppmarktontwikkeling Int?
+  formule String?
+  indtonenfront String?
+  defaulttaxmethodiekdom String?
+  indbagoppervlakteovernemen String?
+  indbagbouwjaarovernemen String?
+  indbagobjectovernemen String?
+  defaultfunctionaliteitdom String?
+  defaultleegstandsrisicodom String?
+  defaultlocatiedom String?
+  defaultbrutonettoinhdom String?
+  defaultbrutonettooppdom String?
+  defaultdeelobjectstatusdom String?
+  defaultarchetypecode String?
+  defaultomzetbelastingdom String?
+  indmeetellenoppervlakte String?
+  indmeetelleninhoud String?
+  indoverschrijvenmodeldeelobj String?
+  indbagobjectverplicht String?
+  procesmutatie String?
+  voorzieningentondom String?
+  liggingtondom String?
+  wozdeelobjectcyclus Wozdeelobjectcyclus[]
+}
+
+model Wozdeelobjectcyclus {
+  deelobjectcyclusnr Int @id
+  ttingangreg DateTime?
+  ingangregnr Int?
+  ingangstatusdom String?
+  tteindereg DateTime?
+  einderegnr Int?
+  eindestatusdom String?
+  ttingang DateTime?
+  tteinde DateTime?
+  jjbouw Int?
+  bouwlaag Int?
+  ontslverdiepingdom String?
+  aakamers Int?
+  bouwjaarklasse String?
+  jjrenovatie Int?
+  pprenovatie Int?
+  doelmatigheiddom String?
+  uitstralingdom String?
+  voorzieningdom String?
+  onderhouddom String?
+  kwaliteitdom String?
+  inhoud Int?
+  brutonettoinhdom String?
+  oppervlakte Int?
+  brutonettooppdom String?
+  lengte Int?
+  breedte Int?
+  hoogte Int?
+  frontbreedte Int?
+  aantal Int?
+  aantekening String?
+  deelobjectstatusdom String?
+  bagmemo String?
+  archetypecode String?
+  omzetbelastingdom String?
+  vrijstelcode String?
+  groepnr Int?
+  omschrijving String?
+  taxonderdeelnr Int?
+  usermutatie String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  taxmethodiekdom String?
+  indwoning String?
+  pandbagid String?
+  verblijfsobjectbagid String?
+  standplaatsbagid String?
+  ligplaatsbagid String?
+  omschrijvingaanvullend String?
+  vrijveld1 String?
+  vrijveld2 String?
+  vrijveld3 String?
+  vrijveld4 String?
+  vrijveld5 String?
+  vrijveld6 String?
+  vrijveld7 String?
+  vrijveld8 String?
+  vrijveld9 String?
+  vrijveld10 String?
+  vrijveld11 String?
+  vrijveld12 String?
+  vrijveld13 String?
+  vrijveld14 String?
+  vrijveld15 String?
+  vrijveld16 String?
+  vrijveld17 String?
+  vrijveld18 String?
+  vrijveld19 String?
+  vrijveld20 String?
+  indprimair String?
+  liggingdom String?
+  functionaliteitdom String?
+  leegstandsrisicodom String?
+  locatiedom String?
+  indprimairtaxatie String?
+  ppfactor Int?
+  clusternr Int?
+  nraanduidingbagid String?
+  zone String?
+  gebroppervlakte Int?
+  meerekenengvwhwkdom String?
+  redennietkoppelenbagobject String?
+  deelobjectgeometrienr Int?
+  ppgereed Int?
+  energielabeldom String?
+  procesmutatie String?
+  wozdeelobjectcode Wozdeelobjectcode? @relation(fields: [deelobjectcode] , references: [deelobjectcode])
+  deelobjectcode String?
+  wozdeelobject Wozdeelobject? @relation(fields: [deelobjectnr] , references: [deelobjectnr])
+  deelobjectnr Int?
+}
+
+model Wozobject {
+  objectnr Int @id
+  ttingangreg DateTime?
+  ingangregnr Int?
+  ingangstatusdom String?
+  tteindereg DateTime?
+  einderegnr Int?
+  eindestatusdom String?
+  wozobjectsrtdom String?
+  wozobjectnr String?
+  stopcode String?
+  usermutatie String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  indcluster String?
+  procesmutatie String?
+  indberichtenverkeer String?
+  wozobjectcyclus Wozobjectcyclus[]
+  taxtaxatie Taxtaxatie[]
+  wozdeelobject Wozdeelobject[]
+  wozbelang Wozbelang[]
+}
+
+model Wozobjectcyclus {
+  objectcyclusnr Int @id
+  ttingangreg DateTime?
+  ingangregnr Int?
+  ingangstatusdom String?
+  tteindereg DateTime?
+  einderegnr Int?
+  eindestatusdom String?
+  ttingang DateTime?
+  tteinde DateTime?
+  omschrijving String?
+  gemeentecode String?
+  oppgrond Int?
+  gebruiksdom String?
+  gebouwddom String?
+  omzetbelastingdom String?
+  bouwstroomcode String?
+  indinonderzoek String?
+  waardegebiedcode String?
+  wozobjectstatusdom String?
+  monumentdom String?
+  vrijstelcode String?
+  bijzwaarderingsdom String?
+  groepnr Int?
+  indlift String?
+  liggingdom String?
+  ontbrekennutsdom String?
+  stijlletter String?
+  bouwtypecode String?
+  runselectienr Int?
+  indgbamuteer String?
+  broncode String?
+  ppgereed Int?
+  primairdeelobjectnr Int?
+  indcourant String?
+  indbemalen String?
+  nraanduidingnr Int?
+  identaanvullend String?
+  openbareruimtebagid String?
+  nraanduidingbagid String?
+  omschrijvingaanvullend String?
+  usermutatie String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  doelmatigheiddom String?
+  kwaliteitdom String?
+  onderhouddom String?
+  uitstralingdom String?
+  voorzieningdom String?
+  functionaliteitdom String?
+  leegstandsrisicodom String?
+  locatiedom String?
+  waterschapcode String?
+  inonderzoeknr Int?
+  oppmeegetaxeerd Int?
+  verblijfsobjectbagid String?
+  standplaatsbagid String?
+  ligplaatsbagid String?
+  werkgebiedtaxateurcode String?
+  werkgebiedcontrollercode String?
+  taxateur String?
+  werkvoorbereider String?
+  lozingtypedom String?
+  lozingcode String?
+  objectgeometrienr Int?
+  vrijkenmerkcode String?
+  procesmutatie String?
+  wozobject Wozobject? @relation(fields: [objectnr] , references: [objectnr])
+  objectnr Int?
+  wozsrtobjectcode Wozsrtobjectcode? @relation(fields: [srtobjectcode] , references: [srtobjectcode])
+  srtobjectcode String?
+}
+
+model Wozsrtobjectcode {
+  srtobjectcode String @id
+  indvervallen String?
+  ttopvoer DateTime?
+  ttmutatie DateTime?
+  usermutatie String?
+  ddingang DateTime?
+  ddeinde DateTime?
+  omschrijving String?
+  gebruiksdom String?
+  indwoning String?
+  indgbawoning String?
+  indgba String?
+  indcontrvreovl String?
+  gebouwddom String?
+  omschrijvingverkort String?
+  categoriecode String?
+  subcategoriecode String?
+  indwonwozgebruik String?
+  indstufafval String?
+  indkvk String?
+  stfgebruiksdom String?
+  stfgebouwddom String?
+  indexporteerortax String?
+  procesmutatie String?
+  wozobjectcyclus Wozobjectcyclus[]
+}

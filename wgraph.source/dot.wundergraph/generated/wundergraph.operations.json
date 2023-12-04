@@ -1,0 +1,30 @@
+{
+"graphql_operation_files": [
+{
+"operation_name": "Catalogs",
+"api_mount_path": "Catalogs",
+"file_path": "Catalogs.graphql",
+"content": "query Catalogs($filter: String){catalogs: dcat2_catalogs(filter: $filter){description {description} landingPage identifier dataservice {description {description} endpointURL endpointDescription identifier title {title}}}}"
+}
+],
+"typescript_operation_files": [
+{
+"operation_name": "UsersGet",
+"api_mount_path": "users/get",
+"file_path": "users/get.ts",
+"module_path": "generated/bundle/operations/users/get"
+},
+{
+"operation_name": "UsersSubscribe",
+"api_mount_path": "users/subscribe",
+"file_path": "users/subscribe.ts",
+"module_path": "generated/bundle/operations/users/subscribe"
+},
+{
+"operation_name": "UsersUpdate",
+"api_mount_path": "users/update",
+"file_path": "users/update.ts",
+"module_path": "generated/bundle/operations/users/update"
+}
+]
+}

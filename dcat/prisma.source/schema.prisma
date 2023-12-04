@@ -1,0 +1,288 @@
+
+
+// Generated: 2023-11-14 15:29:37
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+//  provider = "sqlite"
+//  provider = "mysql"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Catalog {
+  id Int @id @default(autoincrement())
+  identifier String?
+  license String?
+  creator String?
+  publisher String?
+  contactPoint String?
+  accessRights String?
+  releaseDate String?
+  update String?
+  landingPage String?
+  frequency String?
+  temporalCoverage String?
+  homepage String?
+  themes String?
+  catalogId Int?
+  catalogRecordId Int?
+  legalfoundation Legalfoundation[]
+  otheridentifier Otheridentifier[]
+  qualifiedattribution Qualifiedattribution[]
+  rights Rights[]
+  description Description[]
+  keyword Keyword[]
+  resourcelanguage Resourcelanguage[]
+  spatial Spatial[]
+  title Title[]
+  theme Theme[]
+  dataset Dataset[]
+  catalogrecord Catalogrecord[]
+  conformsto Conformsto[]
+  dataservice Dataservice[]
+}
+
+model Catalogrecord {
+  id Int @id @default(autoincrement())
+  primaryTopic String?
+  modified String?
+  listingDate String?
+  conformsTo String?
+  sourceMetadata String?
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+}
+
+model Conformsto {
+  id Int @id @default(autoincrement())
+  conformTo String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+}
+
+model Dataservice {
+  id Int @id @default(autoincrement())
+  identifier String?
+  license String?
+  creator String?
+  publisher String?
+  contactPoint String?
+  accessRights String?
+  releaseDate String?
+  update String?
+  landingPage String?
+  endpointURL String?
+  endpointDescription String?
+  distributionId Int?
+  catalogRecordId Int?
+  resourcelanguage Resourcelanguage[]
+  dataset Dataset[]
+  description Description[]
+  theme Theme[]
+  conformsto Conformsto[]
+  qualifiedattribution Qualifiedattribution[]
+  keyword Keyword[]
+  otheridentifier Otheridentifier[]
+  legalfoundation Legalfoundation[]
+  rights Rights[]
+  spatial Spatial[]
+  title Title[]
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+}
+
+model Dataset {
+  id Int @id @default(autoincrement())
+  identifier String?
+  license String?
+  creator String?
+  publisher String?
+  contactPoint String?
+  accessRights String?
+  releaseDate String?
+  update String?
+  landingPage String?
+  frequency String?
+  temporalCoverage String?
+  catalogrecordId Int?
+  legalfoundation Legalfoundation[]
+  otheridentifier Otheridentifier[]
+  distribution Distribution[]
+  title Title[]
+  theme Theme[]
+  keyword Keyword[]
+  description Description[]
+  conformsto Conformsto[]
+  resourcelanguage Resourcelanguage[]
+  rights Rights[]
+  spatial Spatial[]
+  qualifiedattribution Qualifiedattribution[]
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+}
+
+model Description {
+  id Int @id @default(autoincrement())
+  description String
+  resourcelanguage Resourcelanguage[]
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+}
+
+model Distribution {
+  id Int @id @default(autoincrement())
+  accessURL String?
+  format String?
+  license String?
+  accesService String?
+  downloadURL String?
+  modified String?
+  issued String?
+  byteSize Int?
+  mediaType String?
+  checksum Int?
+  supportingRole String?
+  theme Theme[]
+  keyword Keyword[]
+  rights Rights[]
+  spatial Spatial[]
+  description Description[]
+  legalfoundation Legalfoundation[]
+  otheridentifier Otheridentifier[]
+  qualifiedattribution Qualifiedattribution[]
+  title Title[]
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+}
+
+model Keyword {
+  id Int @id @default(autoincrement())
+  keyword String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+}
+
+model Legalfoundation {
+  id Int @id @default(autoincrement())
+  legalFoundation String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+}
+
+model Otheridentifier {
+  id Int @id @default(autoincrement())
+  otherIdentifier String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+}
+
+model Qualifiedattribution {
+  id Int @id @default(autoincrement())
+  qualifiedAttribution String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+}
+
+model Resourcelanguage {
+  id Int @id @default(autoincrement())
+  ResourceLanguage String
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  description Description? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+}
+
+model Rights {
+  id Int @id @default(autoincrement())
+  rights String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+}
+
+model Spatial {
+  id Int @id @default(autoincrement())
+  spatial String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+}
+
+model Theme {
+  id Int @id @default(autoincrement())
+  theme String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+}
+
+model Title {
+  id Int @id @default(autoincrement())
+  title String
+  catalog Catalog? @relation(fields: [catalogId] , references: [id])
+  catalogId Int?
+  dataset Dataset? @relation(fields: [datasetId] , references: [id])
+  datasetId Int?
+  dataservice Dataservice? @relation(fields: [dataserviceId] , references: [id])
+  dataserviceId Int?
+  distribution Distribution? @relation(fields: [distributionId] , references: [id])
+  distributionId Int?
+}

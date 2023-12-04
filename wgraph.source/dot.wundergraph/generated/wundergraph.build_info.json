@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "sdk": {
+    "version": "0.180.1"
+  },
+  "wunderctl": {
+    "version": "0.176.3"
+  },
+  "node": {
+    "version": "v20.10.0"
+  },
+  "os": {
+    "type": "Linux",
+    "platform": "linux",
+    "arch": "x64",
+    "version": "#202305171336 SMP PREEMPT_DYNAMIC Wed May 17 14:04:50 UTC 2023",
+    "release": "6.2.16-060216-generic"
+  },
+  "stats": {
+    "totalApis": 3,
+    "hasUploadProvider": false,
+    "totalOperations": 4,
+    "totalWebhooks": 0,
+    "hasAuthenticationProvider": false
+  }
+}

@@ -1,0 +1,20 @@
+query Catalogs ($filter: String) {
+	catalogs: dcat2_catalogs(filter: $filter) {
+    description {
+      description
+    }
+    landingPage
+    identifier
+    dataservice {
+      description {
+        description
+      }
+      endpointURL
+      endpointDescription
+      identifier
+      title {
+        title
+      }
+    }
+	}
+}
